@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        body{
+            height: 100vh;
+            background: linear-gradient(to right, crimson, orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', sans-serif;
+        }
+    
+        .clock{
+           width: 550px;
+           height: 150px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+        }
+        .clock div{
+            background-color: white;
+            height: 100px;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <div><h2>A web page to Display Date and time</h2></div>
+   <div class="clock">
+    
+    <h3 id="date"></h3>--
+    <h3 id="hour"></h3>:<br />
+    <h3 id="minutes"></h3>:
+    <h3 id="seconds"></h3>
+
+   </div>
+        
+   
+    <!-- <select id="select-options">
+        <option value=" ">--select hour format--</option>
+        <option value="12 hour">12H Format</option>
+        <option value="24 hour">24H Format</option>
+    </select>
+    <h4 id="select-option"></h4> -->
+    <script>
+
+dt = document.getElementById("date")
+const h = document.getElementById("hour")
+const m = document.getElementById("minutes")
+const s = document.getElementById("seconds")
+options = document.getElementById("select-options")
+// let date = new Date()
+
+
+
+ // Display date and time
+ const clock = setInterval(function time(){
+     let date = new Date()
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
+    console.log(hours, minutes, seconds)
+    if (hours < 10){
+        hours = "0" + hours
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes
+    }
+    if (seconds < 10){
+        seconds = "0" + seconds
+    }
+    h.innerText = hours
+    m.innerText = minutes
+    s.innerText = seconds
+     
+ }, 1000);
+ 
+ d = new Date()
+ let day = d.getDay()
+ switch(day){
+     case 0: 
+     day = "Sunday"
+     break;
+
+     case 1: 
+     day = "Moday"
+     break;
+
+     case 2: 
+     day = "Tuesday"
+     break;
+
+     case 3: 
+     day = "Wednessday"
+     break;
+
+     case 4: 
+     day = "Thursday"
+     break;
+
+     case 5: 
+     day = "Friday"
+     break;
+     
+     case 6: 
+     day = "Saturday"
+
+ }
+   month = d.getUTCMonth() + 1
+   year = d.getUTCFullYear()
+   console.log(month, year)
+//  options.addEventListener("change", function(){
+//     if(options.value == "12 hour"){
+//         dt.innerText = day + " " + month + " "+ year
+//     }else{
+//         dt.innerText = date.toLocaleString('en-US', {
+//             hour12: false,
+//         })
+//     }
+// })
+
+dt.innerText = day + " " +  month + " " + year
+    </script>
+</body>
+</html>
